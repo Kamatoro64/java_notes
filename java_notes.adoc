@@ -1,0 +1,116 @@
+= Java Notes
+Author kamatoro64
+:toc: left
+:toclevels: 5
+:sectnums:
+:sectnumlevels: 3
+:source-highlighter: prettify
+:icons: font
+
+== Classes and Objects
+=== Introduction to Classes and Objects
+
+Object-oriented programming (OOP) involves programming using objects
+
+==== Objects
+* An object represents an entity or an object in the real world
+* An object has a state, a behaviour, and an identity
+* The state of an object is represented by the data fields of the oject with their current values. The state of an object is also known as its properties or attributes
+* The behaviour of an object is defined by the methods of an object. THe behavour of an object is also known as its actions. To invoke/call a method of an object is to ask the object to perform an action
+
+The Identity of an object is what makes an object unique
+[source,java]
+----
+Point p1 = new Point(0, 1);
+Point p2 = new Point(0, 1);
+
+SYstem.out.println(p1 == p2); //false
+----
+
+Two Objects of the same type have the same data fields and same methods (same behaviour/actions). 
+
+Two objects have the same state if their property values are identical. Since objects p1 and p2 have the same x,y coordinates, they have identical states
+
+==== Classes
+
+* A Class is a template/blueprint that defines the structure of an Object that is created from this class (data fields and actions that an object will have).
+
+* An Object is an instance of a Class. Objects of the same type are created/instantiated from the same class
+
+* A Java class uses variables to define the data fields and methods to define actions. 
+
+* There are special methods Called Constructors. A constructor can do anything, it is simply a method, but it is designed to do initialising actions, such as initialising the data fields of an object. A constructor is a public method, has the same name as the class and has no return type. 
+
+* The parameters of the constructor methods should have the same names as the data fields
+
+* The `this` keyword refers to the object. I.e. this.x = x -> The x data field of the object should be equals to the parameter x.
+
+* Default constructors - If we create a class without creating a constructor, Java automatically creates a default constructor that takes no parameters and we will be able to use it to create objects of this class. A constructor that has no parameters. 
+
+[source,java]
+----
+// Object initialisation
+Point p1 = new Point(0,1);
+
+// Constructor
+public Point(int x, int y){
+	this.x = x;
+	this.y = y;
+}
+----
+
+* Graphical User Interfaces are based in object oriented programming. Button class, Label class, etc.
+
+=== Creating a Class in Java
+
+Create a Circle Class. Start by designing the data fields and methods of the Class:
+
+- Data fields (attributes)
+	center: Point
+	radius: double
+
+- Methods (actions)
+	getArea() : double
+	getPerimeter() : double
+	setRadius( newRadius : double ) : void
+	setCenter( newCetner : Point ) : void
+
+==== Defining a Class
+
+[source,java]
+----
+class Circle {
+
+	<1>
+
+	Point center; <2>
+	double radius;
+
+	<3>
+	double getPerimeter(){
+		return 2 * Math.PI * radius; 
+	}
+
+	double getArea(){
+		return Math.PI * radius * radius; 
+	}
+
+	void setRadius(double newRadius){ 
+		radius = newRadius;
+	}
+
+	void setCenter(Point newCenter){
+		center = newCenter;
+	}
+
+}
+----
+<1> There is no main() method in a Class definition. This class will be used to create Circle objects, not to run some code. We will use this class in the main() method of our Main class
+<2> Attributes/Instance variables are declared directly inside the class. They can be accessed anywhere inside the class, inside all methods. Attributes that are declared but not initialised take default values (center is null for because it is a reference type, radius is 0.0 because it is a numeric type). Variables that are declared inside methods are called local variables
+<3> Method definitions
+
+
+
+
+
+
